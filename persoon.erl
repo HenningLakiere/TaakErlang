@@ -28,7 +28,7 @@ loop(Tid) ->       % we willen de loop boekingen laten toevoegen of verwijderen
 	end.
 
 
-add(Pid, {naam, voornaam, leeftijd, rank, status}) ->
+add(Pid, naam, voornaam, leeftijd, rank, status) ->
 	Pid ! {self(), {naam, voornaam, leeftijd, rank, status}}.
 
 
