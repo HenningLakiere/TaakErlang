@@ -1,6 +1,6 @@
 -module(persoon).
 
--export([create/0, init/0, loop/1]).
+-export([create/0, init/0, loop/1, add/2]).
 
 create() ->
 	Pid = spawn(?MODULE, init, []). % create returned process id
@@ -26,5 +26,9 @@ loop(Tid) ->       % we willen de loop boekingen laten toevoegen of verwijderen
 		_ ->
 			loop(Tid)
 	end.
+
+
+add(Pid, {naam, voornaam, leeftijd, rank, status}) ->
+	Pid ! {self(), {naam, voornaam, leeftijd, rank, status}}.
 
 
